@@ -1,0 +1,49 @@
+# --- Secrets and local configuration ---------------------------------------
+.env
+
+# --- Biometric data: must never be committed --------------------------------
+# Face embeddings are personal data under GDPR. The directories are kept via
+# .gitkeep; their contents stay local.
+storage/embeddings/vectors/*.npy
+storage/embeddings/students.json
+storage/attendance/*.jsonl
+storage/attendance/*.csv
+storage/logs/*.log
+storage/logs/*.log.*
+
+# --- Downloaded pre-trained weights (hundreds of MB; re-downloaded on demand)
+models/
+!models/.gitkeep
+
+# --- Python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# --- Tooling ----------------------------------------------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- OS / editors -----------------------------------------------------------
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# --- Evaluation ------------------------------------------------------------
+# Datasets contain student photographs — never commit them.
+dataset/
+datasets/
+evaluation_report.md
+results.json
+scores.csv
+figures/

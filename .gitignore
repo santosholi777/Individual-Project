@@ -1,0 +1,40 @@
+# ---------------------------------------------------------------------------
+# DeepVisionAttend — root ignore rules
+# ---------------------------------------------------------------------------
+
+# Secrets and local configuration
+.env
+.env.local
+*.local
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Node / frontend build
+node_modules/
+dist/
+dist-ssr/
+
+# Model weights (downloaded at setup, ~600 MB — not versioned)
+ai-service/models/models/
+
+# Biometric data & runtime state — personal data under GDPR, never commit
+ai-service/storage/embeddings/*.json
+ai-service/storage/embeddings/vectors/*.npy
+ai-service/storage/attendance/*.jsonl
+ai-service/storage/logs/*.log
+
+# Tooling / editor / OS
+.agents/
+.claude/
+skills-lock.json
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
