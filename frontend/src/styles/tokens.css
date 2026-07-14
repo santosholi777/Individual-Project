@@ -1,0 +1,188 @@
+/**
+ * DeepVisionAttend — design tokens.
+ *
+ * Every colour, space and radius used by the app is declared here once. Light is
+ * the default; dark mode is a *selected* set of values (not an automatic flip)
+ * and wins from either the OS setting or the in-app theme toggle.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* --- Surfaces ------------------------------------------------------- */
+  --page: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f2f4f7;
+  --surface-hover: #eef1f5;
+  --overlay: rgba(16, 18, 24, 0.55);
+
+  /* --- Ink ------------------------------------------------------------ */
+  --ink: #10131a;
+  --ink-secondary: #4d5462;
+  --ink-muted: #7a8394;
+  --ink-on-accent: #ffffff;
+
+  /* --- Lines ---------------------------------------------------------- */
+  --border: rgba(16, 19, 26, 0.1);
+  --border-strong: rgba(16, 19, 26, 0.18);
+  --gridline: #e6e9ee;
+  --baseline: #c8cdd6;
+
+  /* --- Brand / accent ------------------------------------------------- */
+  --accent: #2a78d6;
+  --accent-hover: #256abf;
+  --accent-active: #184f95;
+  --accent-wash: rgba(42, 120, 214, 0.1);
+  --accent-ring: rgba(42, 120, 214, 0.35);
+
+  /* --- Data series (validated: see tokens note below) ------------------ */
+  --series-1: #2a78d6;
+  --series-1-wash: rgba(42, 120, 214, 0.12);
+
+  /* --- Status (fixed, never themed as series) ------------------------- */
+  --good: #0ca30c;
+  --good-ink: #056b05;
+  --good-wash: rgba(12, 163, 12, 0.12);
+  --warning: #fab219;
+  --warning-ink: #8a5a00;
+  --warning-wash: rgba(250, 178, 25, 0.16);
+  --critical: #d03b3b;
+  --critical-ink: #a52424;
+  --critical-wash: rgba(208, 59, 59, 0.12);
+  --neutral-wash: rgba(122, 131, 148, 0.14);
+
+  /* --- Elevation ------------------------------------------------------ */
+  --shadow-sm: 0 1px 2px rgba(16, 19, 26, 0.06), 0 1px 3px rgba(16, 19, 26, 0.05);
+  --shadow-md: 0 4px 12px rgba(16, 19, 26, 0.08), 0 2px 4px rgba(16, 19, 26, 0.04);
+  --shadow-lg: 0 16px 40px rgba(16, 19, 26, 0.16), 0 4px 12px rgba(16, 19, 26, 0.08);
+
+  /* --- Geometry ------------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-full: 999px;
+
+  /* --- Space (4px base) ----------------------------------------------- */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 20px;
+  --s6: 24px;
+  --s8: 32px;
+  --s10: 40px;
+  --s12: 48px;
+
+  /* --- Type ----------------------------------------------------------- */
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-base: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 20px;
+  --text-2xl: 26px;
+  --text-hero: 40px;
+
+  /* --- Motion --------------------------------------------------------- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --fast: 120ms;
+  --normal: 200ms;
+
+  --sidebar-w: 236px;
+  --header-h: 60px;
+}
+
+/* Dark values are chosen for the dark surface and validated against it — not a
+   flip of the light set. Declared under both the OS query and the toggle scope,
+   so the toggle wins in both directions. */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+
+    --page: #0d0e12;
+    --surface: #16171c;
+    --surface-2: #1d1f26;
+    --surface-hover: #24262f;
+    --overlay: rgba(0, 0, 0, 0.65);
+
+    --ink: #f4f5f7;
+    --ink-secondary: #b6bcc9;
+    --ink-muted: #858c9c;
+    --ink-on-accent: #ffffff;
+
+    --border: rgba(255, 255, 255, 0.1);
+    --border-strong: rgba(255, 255, 255, 0.18);
+    --gridline: #262932;
+    --baseline: #363a45;
+
+    --accent: #3987e5;
+    --accent-hover: #5598e7;
+    --accent-active: #6da7ec;
+    --accent-wash: rgba(57, 135, 229, 0.16);
+    --accent-ring: rgba(57, 135, 229, 0.45);
+
+    --series-1: #3987e5;
+    --series-1-wash: rgba(57, 135, 229, 0.18);
+
+    --good: #0ca30c;
+    --good-ink: #35c435;
+    --good-wash: rgba(12, 163, 12, 0.18);
+    --warning: #fab219;
+    --warning-ink: #f0b53a;
+    --warning-wash: rgba(250, 178, 25, 0.18);
+    --critical: #d03b3b;
+    --critical-ink: #ef6a6a;
+    --critical-wash: rgba(208, 59, 59, 0.18);
+    --neutral-wash: rgba(133, 140, 156, 0.18);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --page: #0d0e12;
+  --surface: #16171c;
+  --surface-2: #1d1f26;
+  --surface-hover: #24262f;
+  --overlay: rgba(0, 0, 0, 0.65);
+
+  --ink: #f4f5f7;
+  --ink-secondary: #b6bcc9;
+  --ink-muted: #858c9c;
+  --ink-on-accent: #ffffff;
+
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --gridline: #262932;
+  --baseline: #363a45;
+
+  --accent: #3987e5;
+  --accent-hover: #5598e7;
+  --accent-active: #6da7ec;
+  --accent-wash: rgba(57, 135, 229, 0.16);
+  --accent-ring: rgba(57, 135, 229, 0.45);
+
+  --series-1: #3987e5;
+  --series-1-wash: rgba(57, 135, 229, 0.18);
+
+  --good: #0ca30c;
+  --good-ink: #35c435;
+  --good-wash: rgba(12, 163, 12, 0.18);
+  --warning: #fab219;
+  --warning-ink: #f0b53a;
+  --warning-wash: rgba(250, 178, 25, 0.18);
+  --critical: #d03b3b;
+  --critical-ink: #ef6a6a;
+  --critical-wash: rgba(208, 59, 59, 0.18);
+  --neutral-wash: rgba(133, 140, 156, 0.18);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
