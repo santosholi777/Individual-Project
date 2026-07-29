@@ -1,0 +1,315 @@
+.shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  height: 100%;
+}
+
+/* --- Sidebar ---------------------------------------------------------- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s5);
+  padding: var(--s5) var(--s3);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+.sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: 0 var(--s2);
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--ink-on-accent);
+}
+
+.brand__mark svg {
+  width: 19px;
+  height: 19px;
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.brand__name {
+  font-size: var(--text-md);
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.brand__tag {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+/* --- Navigation ------------------------------------------------------- */
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s2) var(--s3);
+  border-radius: var(--radius);
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  text-decoration: none;
+  transition:
+    background var(--fast) var(--ease),
+    color var(--fast) var(--ease);
+}
+
+.nav__item:hover {
+  background: var(--surface-hover);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav__item--active {
+  background: var(--accent-wash);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.nav__item svg {
+  flex-shrink: 0;
+}
+
+/* --- Footer ----------------------------------------------------------- */
+.sidebar__footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+
+.status {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s2);
+  padding: var(--s3);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+
+.status__dot {
+  width: 7px;
+  height: 7px;
+  margin-top: 5px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.status__dot--online {
+  background: var(--good);
+  box-shadow: 0 0 0 3px var(--good-wash);
+}
+
+.status__dot--degraded {
+  background: var(--warning);
+  box-shadow: 0 0 0 3px var(--warning-wash);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.status__dot--offline {
+  background: var(--critical);
+  box-shadow: 0 0 0 3px var(--critical-wash);
+}
+
+@keyframes pulse {
+  50% { opacity: 0.35; }
+}
+
+.status__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.status__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.status__meta {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s2) var(--s3);
+  border-radius: var(--radius);
+  font-size: var(--text-base);
+  color: var(--ink-secondary);
+  transition:
+    background var(--fast) var(--ease),
+    color var(--fast) var(--ease);
+}
+
+.theme-toggle:hover {
+  background: var(--surface-hover);
+  color: var(--ink);
+}
+
+/* --- Content ---------------------------------------------------------- */
+.content {
+  overflow-y: auto;
+  min-width: 0;
+}
+
+/* --- Responsive: sidebar becomes a top bar ---------------------------- */
+@media (max-width: 860px) {
+  .shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--s4);
+    padding: var(--s3) var(--s4);
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+
+  .sidebar__nav {
+    flex-direction: row;
+    gap: var(--s1);
+  }
+
+  .nav__item span {
+    display: none;
+  }
+
+  .nav__item {
+    padding: var(--s2);
+  }
+
+  .sidebar__footer {
+    margin-top: 0;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .status__text,
+  .theme-toggle span {
+    display: none;
+  }
+
+  .status {
+    padding: var(--s2);
+  }
+}
+
+/* On a phone the brand wordmark would push the nav off-screen; the mark alone
+   still identifies the app, and every destination stays reachable without
+   scrolling the bar sideways. */
+@media (max-width: 600px) {
+  .brand__text {
+    display: none;
+  }
+
+  .sidebar {
+    gap: var(--s3);
+    padding: var(--s3);
+  }
+}
+
+/* --- Signed-in account -------------------------------------------------- */
+.user {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: var(--s2);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.user__avatar {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  color: var(--ink-on-accent);
+  font-size: var(--text-sm);
+  font-weight: 650;
+}
+
+.user__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.user__name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user__role {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+.user__signout {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  color: var(--ink-muted);
+  transition:
+    background var(--fast) var(--ease),
+    color var(--fast) var(--ease);
+}
+
+.user__signout:hover {
+  background: var(--critical-wash);
+  color: var(--critical-ink);
+}
+
+@media (max-width: 860px) {
+  .user__text {
+    display: none;
+  }
+
+  .user {
+    padding: var(--s1);
+  }
+}

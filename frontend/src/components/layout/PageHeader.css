@@ -1,0 +1,48 @@
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s4);
+  flex-wrap: wrap;
+  margin-bottom: var(--s6);
+}
+
+.page-header__text {
+  min-width: 0;
+}
+
+.page-header__title {
+  font-size: var(--text-2xl);
+  letter-spacing: -0.02em;
+}
+
+.page-header__description {
+  margin-top: var(--s1);
+  font-size: var(--text-md);
+  color: var(--ink-secondary);
+  max-width: 68ch;
+}
+
+.page-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  flex-shrink: 0;
+}
+
+/* Shared page padding for every route. */
+.page {
+  padding: var(--s8);
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+@media (max-width: 860px) {
+  .page {
+    padding: var(--s5) var(--s4);
+  }
+
+  .page-header__title {
+    font-size: var(--text-xl);
+  }
+}
