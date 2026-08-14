@@ -1,0 +1,100 @@
+.filters {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s3) var(--s4);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+/* Scoped under .filters to beat the generic `.input { width: 100% }` rule —
+   otherwise every control stretches and the row collapses into a stack. */
+.filters .filters__select {
+  width: auto;
+  min-width: 150px;
+  max-width: 190px;
+  height: 34px;
+  flex: 0 0 auto;
+}
+
+.filters__dates {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  flex: 0 0 auto;
+}
+
+.filters .filters__dates .input {
+  width: auto;
+  height: 34px;
+}
+
+.filters__dash {
+  color: var(--ink-muted);
+}
+
+/* --- Segmented control ------------------------------------------------ */
+.segmented {
+  display: flex;
+  padding: 2px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+
+.segmented__btn {
+  padding: var(--s1) var(--s3);
+  height: 28px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-base);
+  font-weight: 550;
+  color: var(--ink-secondary);
+  white-space: nowrap;
+  transition:
+    background var(--fast) var(--ease),
+    color var(--fast) var(--ease);
+}
+
+.segmented__btn:hover {
+  color: var(--ink);
+}
+
+.segmented__btn--active {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- Confidence meter ------------------------------------------------- */
+.conf {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  min-width: 108px;
+}
+
+.conf__track {
+  flex: 1;
+  height: 5px;
+  border-radius: var(--radius-full);
+  background: var(--surface-2);
+  overflow: hidden;
+  min-width: 44px;
+}
+
+/* Same-ramp track: the fill is the sequential hue, the track its own surface
+   step — not a red/amber/green scale, which would imply thresholds the model
+   does not use here. */
+.conf__fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--series-1);
+}
+
+.conf__value {
+  font-size: var(--text-sm);
+  color: var(--ink-secondary);
+  font-weight: 550;
+  min-width: 34px;
+  text-align: right;
+}
