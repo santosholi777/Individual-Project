@@ -1,0 +1,112 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s2);
+  border-radius: var(--radius);
+  font-weight: 550;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition:
+    background var(--fast) var(--ease),
+    border-color var(--fast) var(--ease),
+    color var(--fast) var(--ease),
+    transform var(--fast) var(--ease);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0.5px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Sizes ------------------------------------------------------------ */
+.btn--sm {
+  height: 30px;
+  padding: 0 var(--s3);
+  font-size: var(--text-base);
+}
+
+.btn--md {
+  height: 36px;
+  padding: 0 var(--s4);
+  font-size: var(--text-md);
+}
+
+.btn--lg {
+  height: 44px;
+  padding: 0 var(--s6);
+  font-size: var(--text-lg);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* --- Variants --------------------------------------------------------- */
+.btn--primary {
+  background: var(--accent);
+  color: var(--ink-on-accent);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.btn--primary:active:not(:disabled) {
+  background: var(--accent-active);
+}
+
+.btn--secondary {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--border-strong);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: var(--surface-hover);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink-secondary);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background: var(--surface-hover);
+  color: var(--ink);
+}
+
+.btn--danger {
+  background: var(--critical);
+  color: #ffffff;
+}
+
+.btn--danger:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+/* --- Spinner ---------------------------------------------------------- */
+.btn__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  opacity: 0.9;
+  animation: btn-spin 600ms linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn svg {
+  flex-shrink: 0;
+}

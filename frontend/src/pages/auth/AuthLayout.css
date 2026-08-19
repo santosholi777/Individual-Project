@@ -1,0 +1,243 @@
+.auth {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  min-height: 100%;
+  background: var(--page);
+}
+
+/* ======================================================================
+   Left: the artwork panel
+   ====================================================================== */
+
+/* A layered gradient rather than a flat colour: two off-axis radial washes over
+   a deep base give depth without an image file. The panel commits to a dark
+   look in both themes — it is a branded surface, not app chrome. */
+.auth__art {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--s8);
+  color: #ffffff;
+  background:
+    radial-gradient(120% 90% at 12% 8%, rgba(64, 140, 235, 0.55) 0%, rgba(64, 140, 235, 0) 60%),
+    radial-gradient(90% 80% at 88% 92%, rgba(28, 92, 171, 0.6) 0%, rgba(28, 92, 171, 0) 55%),
+    linear-gradient(155deg, #16305c 0%, #0d1b34 45%, #0a0f1c 100%);
+  isolation: isolate;
+}
+
+/* A faint grid, masked so it fades out toward the edges. */
+.auth__art-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(80% 70% at 50% 45%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(80% 70% at 50% 45%, #000 30%, transparent 100%);
+  pointer-events: none;
+}
+
+.auth__art-glow {
+  position: absolute;
+  top: -18%;
+  right: -22%;
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(90, 165, 245, 0.28) 0%, transparent 68%);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+/* --- Brand ------------------------------------------------------------ */
+.auth__brand {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.auth__brand-mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  backdrop-filter: blur(6px);
+}
+
+.auth__brand-mark svg {
+  width: 19px;
+  height: 19px;
+}
+
+.auth__brand-name {
+  font-size: var(--text-lg);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+/* --- The scan graphic -------------------------------------------------- */
+.auth__art-svg {
+  position: relative;
+  z-index: 1;
+  width: min(62%, 320px);
+  height: auto;
+  align-self: center;
+  margin: var(--s6) 0;
+}
+
+.auth__scanline {
+  animation: auth-scan 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes auth-scan {
+  0%, 100% { transform: translateY(74px); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translateY(324px); opacity: 1; }
+  60% { opacity: 0; }
+}
+
+/* --- Copy -------------------------------------------------------------- */
+.auth__art-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 46ch;
+}
+
+.auth__art-title {
+  font-size: 24px;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.auth__art-text {
+  margin-top: var(--s3);
+  font-size: var(--text-md);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.auth__art-points {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  margin-top: var(--s5);
+}
+
+.auth__art-points li {
+  padding: var(--s1) var(--s3);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: var(--text-xs);
+  font-weight: 550;
+  color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+}
+
+/* ======================================================================
+   Right: the form panel
+   ====================================================================== */
+.auth__panel {
+  display: grid;
+  place-items: center;
+  padding: var(--s8) var(--s6);
+  overflow-y: auto;
+}
+
+.auth__card {
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth__mobile-brand {
+  display: none;
+  align-items: center;
+  gap: var(--s3);
+  margin-bottom: var(--s6);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.auth__mobile-brand:hover {
+  text-decoration: none;
+}
+
+.auth__mobile-brand .auth__brand-mark {
+  background: var(--accent);
+  border-color: transparent;
+}
+
+.auth__header {
+  margin-bottom: var(--s6);
+}
+
+.auth__title {
+  font-size: var(--text-2xl);
+  letter-spacing: -0.025em;
+}
+
+.auth__subtitle {
+  margin-top: var(--s2);
+  font-size: var(--text-md);
+  color: var(--ink-secondary);
+  line-height: 1.55;
+}
+
+.auth__footer {
+  margin-top: var(--s5);
+  padding-top: var(--s4);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: var(--text-md);
+  color: var(--ink-secondary);
+}
+
+/* ======================================================================
+   Responsive
+   ====================================================================== */
+@media (max-width: 900px) {
+  .auth {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  /* The art becomes a compact banner so the form keeps the viewport. */
+  .auth__art {
+    padding: var(--s5);
+    min-height: 168px;
+  }
+
+  .auth__art-svg,
+  .auth__art-copy {
+    display: none;
+  }
+
+  .auth__panel {
+    padding: var(--s6) var(--s4);
+    align-items: start;
+  }
+}
+
+@media (max-width: 560px) {
+  /* Below this the banner is pure decoration taking a third of a phone
+     screen — drop it and lead with the form. */
+  .auth__art {
+    display: none;
+  }
+
+  .auth__mobile-brand {
+    display: flex;
+  }
+}

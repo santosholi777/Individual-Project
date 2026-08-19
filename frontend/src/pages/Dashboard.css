@@ -1,0 +1,147 @@
+.unstyled-link,
+.unstyled-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.dash__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--s4);
+  margin-bottom: var(--s5);
+}
+
+.dash__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: var(--s4);
+  align-items: start;
+}
+
+.dash__panel {
+  padding: var(--s5);
+}
+
+.dash__panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s3);
+  margin-bottom: var(--s4);
+}
+
+.dash__panel-title {
+  font-size: var(--text-lg);
+}
+
+.dash__panel-sub {
+  margin-top: 2px;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+.dash__absentees {
+  margin-top: var(--s4);
+}
+
+/* --- Check-in feed ---------------------------------------------------- */
+.feed {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.feed__item {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s3) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.feed__item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.feed__avatar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--accent-wash);
+  color: var(--accent);
+  font-size: var(--text-base);
+  font-weight: 650;
+}
+
+.feed__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.feed__name {
+  font-size: var(--text-md);
+  font-weight: 550;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feed__meta {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+.feed__right {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  flex-shrink: 0;
+}
+
+.feed__time {
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+/* --- Absentee chips --------------------------------------------------- */
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+.chip {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s2);
+  padding: var(--s1) var(--s3);
+  border-radius: var(--radius-full);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+
+.chip__name {
+  font-size: var(--text-base);
+  font-weight: 550;
+  color: var(--ink);
+}
+
+.chip__id {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1040px) {
+  .dash__grid {
+    grid-template-columns: 1fr;
+  }
+}

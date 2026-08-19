@@ -1,0 +1,134 @@
+/* Shared table styles, used by Students and the Attendance log. */
+
+.table__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s3);
+  padding: var(--s3) var(--s4);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.table__count {
+  font-size: var(--text-base);
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: 0 var(--s3);
+  height: 34px;
+  min-width: 240px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--ink-muted);
+  transition:
+    border-color var(--fast) var(--ease),
+    box-shadow var(--fast) var(--ease);
+}
+
+.search:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-wash);
+  color: var(--accent);
+}
+
+.search__input {
+  border: none;
+  background: none;
+  outline: none;
+  width: 100%;
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+.search__input::placeholder {
+  color: var(--ink-muted);
+}
+
+/* Wide tables scroll inside their own container. */
+.table__wrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-md);
+}
+
+.table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: var(--s3) var(--s4);
+  text-align: left;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink-muted);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: var(--s3) var(--s4);
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  vertical-align: middle;
+}
+
+.table tbody tr {
+  transition: background var(--fast) var(--ease);
+}
+
+.table tbody tr:hover {
+  background: var(--surface-hover);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table__actions-cell {
+  text-align: right;
+  width: 1%;
+  white-space: nowrap;
+}
+
+.table__skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s4);
+}
+
+/* --- Cells ------------------------------------------------------------ */
+.cell-user {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.cell-user__avatar {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--accent-wash);
+  color: var(--accent);
+  font-size: var(--text-base);
+  font-weight: 650;
+}
+
+.cell-user__name {
+  font-weight: 550;
+  white-space: nowrap;
+}

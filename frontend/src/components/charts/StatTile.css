@@ -1,0 +1,63 @@
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s4) var(--s5) var(--s5);
+}
+
+.stat__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+}
+
+.stat__label {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--ink-secondary);
+}
+
+.stat__icon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--ink-muted);
+}
+
+/* The value always wears text ink — never the series colour. Tone tints only
+   the icon, so the number stays maximally legible. */
+.stat--good .stat__icon {
+  background: var(--good-wash);
+  color: var(--good-ink);
+}
+
+.stat--warning .stat__icon {
+  background: var(--warning-wash);
+  color: var(--warning-ink);
+}
+
+.stat--critical .stat__icon {
+  background: var(--critical-wash);
+  color: var(--critical-ink);
+}
+
+.stat__value {
+  font-size: var(--text-2xl);
+  font-weight: 650;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+
+.stat__value--hero {
+  font-size: var(--text-hero);
+}
+
+.stat__meta {
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
